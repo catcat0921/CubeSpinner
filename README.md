@@ -1,7 +1,9 @@
 # 乐高EV3魔方机器人
 
+## 重点：建议固件1.07E
+
 EV3是EDUCATION
-建议固件1.07E
+
 
 使用c语言对EV3进行编程的环境配置教程参考：http://bbs.cmnxt.com/thread-13374-1-1.html
 
