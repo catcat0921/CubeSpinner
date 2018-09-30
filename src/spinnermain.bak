@@ -406,7 +406,7 @@ int spinnermain(int fd_read, int fd_write)
       long time_end = TimerGetMS();
 	  
 	  
-	if (chk==0){
+	//if (chk==0){
       // read the time measurement from the solver process
       char solvetime[20];
       receive_string(fd_read, solvetime, 20);
@@ -453,7 +453,7 @@ int spinnermain(int fd_read, int fd_write)
       frac = ms%1000;
       sprintf (buffer, "total: %d.%s%d", ms/1000, frac<10?"00":frac<100?"0":"", frac);
       LcdText(1, 8,7*16, buffer);
-	  }
+	  //}
 	  
 	  switch(chk)
 	  {

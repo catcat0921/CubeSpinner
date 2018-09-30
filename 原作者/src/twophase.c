@@ -1651,10 +1651,10 @@ void CubieCube_initstatic()
     }
 		struct _CubieCube _cc;
 		CubieCube cc = CubieCube_constructFromFaceCube(&_cc,fc);
-		/*if ((s=CubieCube_verify(cc)) != 0)
+		if ((s=CubieCube_verify(cc)) != 0)
 		{	sprintf(outbuffer, "Error %d", s);
 			return;
-		}*/
+		}
 
 		// +++++++++++++++++++++++ initialization +++++++++++++++++++++++++++++++++
 		struct _CoordCube _c;

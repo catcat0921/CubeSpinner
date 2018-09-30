@@ -261,7 +261,6 @@ void cleanup()
   exit(0);
 }
 
-
 // ----------- main route for scanning / manipulating of cube --------------
 int spinnermain(int fd_read, int fd_write)
 {
@@ -328,13 +327,10 @@ int spinnermain(int fd_read, int fd_write)
       // the red/orange edge detection problem
       int chk = check_scan();
 
-
       // in case of scann error, give error beep and write debug info
-      if (chk==1)
-      {   
-  
-  
-			PlayToneEx(300, 400, 70);         // failure sound
+      if (chk!=0)
+      {   PlayToneEx(300, 400, 70);         // failure sound
+
           LcdClean();
           sprintf (buffer, "Err %d",chk);
           LcdText (1, 90,10, buffer);
@@ -404,15 +400,11 @@ int spinnermain(int fd_read, int fd_write)
       dotwists(moves2);
 
       long time_end = TimerGetMS();
-	  
-	  
-	if (chk==0){
+
       // read the time measurement from the solver process
       char solvetime[20];
       receive_string(fd_read, solvetime, 20);
 
-	  
-	  
       // write solution to screen (for debug purposes)
       LcdClean();
       strcpy (moves1+strlen(moves1), moves2);   // copy parts together in single buffer
@@ -453,50 +445,6 @@ int spinnermain(int fd_read, int fd_write)
       frac = ms%1000;
       sprintf (buffer, "total: %d.%s%d", ms/1000, frac<10?"00":frac<100?"0":"", frac);
       LcdText(1, 8,7*16, buffer);
-	  }
-	  
-	  switch(chk)
-	  {
-			case 2:
-				PlayToneEx(300, 400, 70);         // failure sound
-				LcdClean();
-				LcdText(1, 8,16, "Err2 wrong cube");
-				LcdText(1, 8,32, "Not all 12 edges");
-				LcdText(1, 8,48, "exist exactly once");
-				break;
-			case 3:
-				PlayToneEx(300, 400, 70);         // failure sound
-				LcdClean();
-				LcdText(1, 8,16, "Err3 wrong cube");
-				LcdText(1, 8,32, "One edge has to");
-				LcdText(1, 8,48, "be flipped");
-				break;
-			case 4:
-				PlayToneEx(300, 400, 70);         // failure sound
-				LcdClean();
-				LcdText(1, 8,16, "Err4 wrong cube");
-				LcdText(1, 8,32, "Not all corners");
-				LcdText(1, 8,48, "exist exactly once");
-				break;
-			case 5:
-				PlayToneEx(300, 400, 70);         // failure sound
-				LcdClean();
-				LcdText(1, 8,16, "Err5 wrong cube");
-				LcdText(1, 8,32, "One corner has");
-				LcdText(1, 8,48, "to be twisted");
-				break;
-			case 6:
-				PlayToneEx(300, 400, 70);         // failure sound
-				LcdClean();
-				LcdText(1, 8,16, "Err6 wrong cube");
-				LcdText(1, 8,32, "Two corners or");
-				LcdText(1, 8,48, "two edges have");
-				LcdText(1, 8,64, "to be exchanged");
-				break;
-			default:
-				break;
-	  }
-	  
    }
 }
 
