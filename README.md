@@ -1,4 +1,6 @@
-# 乐高EV3魔方机器人
+# CubeSpinner
+
+乐高EV3魔方机器人
 
 使用c语言对EV3进行编程的环境配置教程参考：[配置链接](http://bbs.cmnxt.com/thread-13374-1-1.html)  
 本项目在乐高论坛中的链接：[点击访问](https://bbs.cmnxt.com/thread-58636-1-1.html)  
